@@ -9,7 +9,7 @@ to determine the original pin.</p>
 <pre>
 Debug Output:
 <?php
-$goodtext = "Not found";
+$goodtext = "Not found the pin for ".$_GET['md5'];
 // If there is no parameter, this code is all skipped
 if ( isset($_GET['md5']) ) {
     $time_pre = microtime(true);
@@ -31,10 +31,10 @@ if ( isset($_GET['md5']) ) {
             $ch2 = $txt[$j];  // Our second character
 
             for($k=0; $k<strlen($txt); $k++ ) {
-                $ch3 = $txt[$k];  // Our second character
+                $ch3 = $txt[$k];  // Our third character
     
                 for($l=0; $l<strlen($txt); $l++ ) {
-                    $ch4 = $txt[$l];  // Our second character
+                    $ch4 = $txt[$l];  // Our fourth character
         
                     // Concatenate the two characters together to 
                     // form the "possible" pre-hash text
@@ -77,7 +77,7 @@ if ( isset($_GET['md5']) ) {
 ?>
 </pre>
 <!-- Use the very short syntax and call htmlentities() -->
-<p>Original Text: <?= htmlentities($goodtext); ?></p>
+<p>PIN: <?= htmlentities($goodtext); ?></p>
 <form>
 <input type="text" name="md5" size="60" />
 <input type="submit" value="Crack MD5"/>
@@ -86,9 +86,6 @@ if ( isset($_GET['md5']) ) {
 <li><a href="index.php">Reset</a></li>
 <li><a href="md5.php">MD5 Encoder</a></li>
 <li><a href="makecode.php">MD5 Code Maker</a></li>
-<li><a
-href="https://github.com/csev/wa4e/tree/master/code/crack"
-target="_blank">Source code for this application</a></li>
 </ul>
 </body>
 </html>

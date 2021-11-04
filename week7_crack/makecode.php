@@ -4,11 +4,13 @@ $md5 = false;
 $code = "";
 if ( isset($_GET['code']) ) {
     $code = $_GET['code'];
-    if ( strlen($code) != 2 ) {
-        $error = "Input must be exactly two characters";
-    } else if ( $code[0] < "a" || $code[0] > "z" || 
-                $code[1] < "a" || $code[1] > "z" ) {
-        $error = "Input must two lower case letters";
+    if ( strlen($code) != 4 ) {
+        $error = "Input must be four numbers";
+    } else if ( $code[0] < "0" || $code[0] > "9" || 
+                $code[1] < "0" || $code[1] > "9" ||
+                $code[2] < "0" || $code[2] > "9" || 
+                $code[3] < "0" || $code[3] > "9") {
+        $error = "Input must four numbers";
     } else {
         $md5 = hash('md5', $code);
     }
@@ -29,7 +31,7 @@ if ( $md5 !== false ) {
     print "<p>MD5 value: ".htmlentities($md5)."</p>";
 }
 ?>
-<p>Please enter a two-letter key for encoding.</p>
+<p>Please enter a four-letter key for encoding.</p>
 <form>
 <input type="text" name="code" value="<?= htmlentities($code) ?>"/>
 <input type="submit" value="Compute MD5 for CODE"/>
