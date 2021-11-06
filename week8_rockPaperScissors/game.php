@@ -24,21 +24,14 @@ $computer = rand(0,2); // Hard code the computer to rock
 // and returns "Tie", "You Lose", "You Win" depending on play
 // where "You" is the human being addressed by the computer
 function check($computer, $human) {
-    if ( $human == 0 && $computer == 2) {
-        return "You Win";
-    } else if ( $human == 0 && $computer == 1) {
-        return "You Lose";
-    } else if ( $human == 1 && $computer == 0) {
-        return "You Win";
-    } else if ( $human == 1 && $computer == 2) {
-        return "You Lose";
-    } else if ( $human == 2 && $computer == 1) {
-        return "You Win";
-    } else if ( $human == 2 && $computer == 0) {
-        return "You Lose";
-    } else if ( $human == $computer) {
+    if ( $human == $computer) {
         return "Tie";
-    } 
+    } else if ( ($human - $computer + 2) % 3 == 0) {
+        return "You Win";
+    } else {
+        return "You Lose";
+    }
+     
     return false;
 }
 
